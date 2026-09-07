@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Levly — Rejoins la bêta</title>
+<meta name="description" content="Levly transforme ton activité physique en récompenses, et chaque effort fait avancer un don réel à une association. Rejoins la bêta." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#131e33;
+    --brand:#5b7ebd;
+    --brand-dark:#3d60a0;
+    --brand-tint:#eef3fb;
+    --gold:#f2b33d;
+    --green:#22c55e;
+    --navy:#101a30;
+    --paper:#ffffff;
+    --paper-tint:#f6f9fd;
+    --line:#e6ebf4;
+    --muted:#5d6b85;
+    --display:"Sora",system-ui,sans-serif;
+    --body:"Instrument Sans",system-ui,sans-serif;
+    --pad-x:clamp(22px,6vw,64px);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 var(--pad-x)}
+
+  /* NAV */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px var(--pad-x)}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:19px}
+  .logo .dot{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px}
+  .nav-cta{font-family:var(--display);font-weight:600;font-size:14px;color:#fff;background:var(--brand);padding:10px 22px;border-radius:100px;transition:transform .18s,background .18s}
+  .nav-cta:hover{background:var(--brand-dark);transform:translateY(-2px)}
+
+  /* HERO */
+  #hero{position:relative;text-align:center;padding:64px var(--pad-x) 72px;
+    background:radial-gradient(760px 440px at 50% -8%,rgba(91,126,189,.16),transparent 62%),
+               radial-gradient(500px 320px at 12% 30%,rgba(242,179,61,.12),transparent 60%),
+               var(--paper-tint);}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:100px;padding:7px 16px;font-size:12.5px;font-weight:600;color:var(--muted);box-shadow:0 4px 20px rgba(19,30,51,.06);margin-bottom:26px}
+  .badge .live{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2.2s ease infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.45)}55%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
+  h1{font-family:var(--display);font-size:clamp(38px,6.4vw,64px);font-weight:800;letter-spacing:-2px;line-height:1.05;margin-bottom:22px}
+  h1 .grad{background:linear-gradient(90deg,var(--brand),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-size:clamp(16px,2.4vw,19px);color:var(--muted);max-width:620px;margin:0 auto 36px}
+  .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:15px;padding:15px 30px;border-radius:100px;cursor:pointer;border:none;transition:transform .18s,box-shadow .18s,background .18s}
+  .btn-brand{background:var(--brand);color:#fff;box-shadow:0 8px 24px rgba(91,126,189,.34)}
+  .btn-brand:hover{background:var(--brand-dark);transform:translateY(-2px);box-shadow:0 12px 30px rgba(91,126,189,.44)}
+
+  /* BLOCS */
+  #how{padding:76px 0 20px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+  .card{background:var(--paper-tint);border:1px solid var(--line);border-radius:22px;padding:32px 26px;transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(19,30,51,.1)}
+  .card .ico{width:52px;height:52px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px}
+  .i-blue{background:var(--brand-tint)}
+  .i-gold{background:#fff4e0}
+  .i-green{background:#ecfdf3}
+  .card h3{font-family:var(--display);font-size:19px;font-weight:700;letter-spacing:-.4px;margin-bottom:9px}
+  .card p{font-size:14.5px;color:var(--muted)}
+
+  /* DÉMO VIDÉO */
+  #demo{padding:70px 0 10px;text-align:center}
+  #demo .eyebrow{font-family:var(--display);font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:12.5px;color:var(--brand);margin-bottom:12px}
+  #demo h2{font-family:var(--display);font-size:clamp(24px,3.4vw,34px);font-weight:800;letter-spacing:-1px;margin-bottom:10px}
+  #demo .lead{font-size:16px;color:var(--muted);max-width:480px;margin:0 auto 34px}
+  .video-shell{display:inline-block;padding:10px;border-radius:42px;background:linear-gradient(150deg,var(--brand),var(--navy));box-shadow:0 32px 80px rgba(19,30,51,.22)}
+  .video-shell video{display:block;width:min(300px,72vw);border-radius:34px}
+
+  /* CAGNOTTE — bloc mis en avant */
+  #cause{padding:70px 0}
+  .cause-box{background:radial-gradient(600px 300px at 90% 0%,rgba(242,179,61,.14),transparent 60%),var(--navy);color:#fff;border-radius:28px;padding:clamp(34px,5vw,54px);text-align:center;position:relative;overflow:hidden}
+  .cause-box .em{font-size:38px;margin-bottom:16px;display:block}
+  .cause-box h2{font-family:var(--display);font-size:clamp(24px,3.4vw,34px);font-weight:700;letter-spacing:-.8px;margin-bottom:14px}
+  .cause-box p{font-size:16px;color:rgba(255,255,255,.7);max-width:560px;margin:0 auto}
+  .cause-box .assoc{margin-top:20px;display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:100px;padding:9px 20px;font-family:var(--display);font-weight:600;font-size:14px}
+
+  /* FORM — le cœur */
+  #join{padding:20px 0 90px}
+  .join-box{max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:28px;padding:clamp(32px,5vw,52px);text-align:center;box-shadow:0 20px 60px rgba(19,30,51,.1)}
+  .join-box .eyebrow{font-family:var(--display);font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:12.5px;color:var(--brand);margin-bottom:12px}
+  .join-box h2{font-family:var(--display);font-size:clamp(26px,3.6vw,36px);font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+  .join-box .note{font-size:15px;color:var(--muted);max-width:440px;margin:0 auto 28px}
+  .form-row{display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap}
+  .form-row input[type=email]{flex:1;min-width:220px;font-family:var(--body);font-size:15px;padding:15px 18px;border:1.5px solid var(--line);border-radius:100px;outline:none;transition:border-color .2s;color:var(--ink)}
+  .form-row input[type=email]:focus{border-color:var(--brand)}
+  .form-row button{white-space:nowrap}
+  .privacy-note{font-size:12.5px;color:var(--muted);margin-top:16px}
+  .privacy-note a{color:var(--brand);font-weight:600}
+  /* message succès */
+  #success{display:none;text-align:center}
+  #success .check{width:64px;height:64px;border-radius:50%;background:#ecfdf3;color:#16a34a;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 18px}
+  #success h2{font-family:var(--display);font-size:28px;font-weight:800;margin-bottom:10px}
+  #success p{font-size:15.5px;color:var(--muted);max-width:400px;margin:0 auto}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:rgba(255,255,255,.55);padding:30px var(--pad-x)}
+  .foot-in{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px}
+  .foot-in .logo{color:#fff;font-size:16px}
+  .foot-links{display:flex;gap:20px}
+  .foot-links a{color:rgba(255,255,255,.55);transition:color .2s}
+  .foot-links a:hover{color:#fff}
+
+  @media(max-width:820px){
+    .cards{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <a href="#hero" class="logo"><span class="dot">L</span> Levly</a>
+    <a href="#join" class="nav-cta">Rejoindre la bêta</a>
+  </nav>
+
+  <!-- HERO -->
+  <header id="hero">
+    <div class="badge"><span class="live"></span> Bêta en préparation · places limitées</div>
+    <h1>Bouge. Sois récompensé.<br /><span class="grad">Aide une cause.</span></h1>
+    <p class="sub">
+      Levly transforme ton activité physique en récompenses — et chaque effort fait avancer un don réel à une association.
+      Zéro saisie : connecte ton app, bouge, c'est tout.
+    </p>
+    <div class="hero-ctas">
+      <a href="#join" class="btn btn-brand">Je veux tester Levly</a>
+    </div>
+  </header>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section id="how">
+    <div class="wrap">
+      <div class="cards">
+        <div class="card">
+          <div class="ico i-blue">🔗</div>
+          <h3>Zéro friction</h3>
+          <p>Connecte Strava ou Polar une seule fois. Tes activités sont détectées toutes seules, en arrière-plan. Rien à noter.</p>
+        </div>
+        <div class="card">
+          <div class="ico i-gold">🏆</div>
+          <h3>La régularité paie</h3>
+          <p>Chaque activité te rapporte des jetons. Plus tu es constant, plus tu gagnes. On récompense le fait de tenir, pas la performance.</p>
+        </div>
+        <div class="card">
+          <div class="ico i-green">💚</div>
+          <h3>Ton sport a du sens</h3>
+          <p>Engage tes jetons dans une cagnotte solidaire. Ton effort personnel devient un impact collectif réel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DÉMO VIDÉO -->
+  <section id="demo">
+    <div class="wrap">
+      <div class="eyebrow">La démo</div>
+      <h2>Levly en 1 minute</h2>
+      <p class="lead">De la connexion de ton app à la cagnotte solidaire. Voilà ce qui t'attend.</p>
+      <div class="video-shell">
+        <video id="demo-video" controls muted playsinline preload="metadata">
+          <source src="demo-levly.mp4" type="video/mp4" />
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAGNOTTE -->
+  <section id="cause">
+    <div class="wrap">
+      <div class="cause-box">
+        <span class="em">💚</span>
+        <h2>Ton activité soutient une vraie cause</h2>
+        <p>
+          Avec Levly, faire du sport ne te fait pas seulement du bien à toi.
+          Ensemble, la communauté fait avancer un don que nous reversons à une association.
+        </p>
+        <div class="assoc">🎗️ AVC tous concernés — prévention des AVC par le sport</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULAIRE -->
+  <section id="join">
+    <div class="wrap">
+      <div class="join-box">
+        <!-- Formulaire -->
+        <div id="form-block">
+          <div class="eyebrow">Rejoins la bêta</div>
+          <h2>Sois parmi les premiers</h2>
+          <p class="note">Places limitées. Aide-nous à construire Levly et teste l'app avant tout le monde.</p>
+          <form id="beta-form" action="https://formspree.io/f/mgaenroo" method="POST">
+            <div class="form-row">
+              <input type="email" name="email" placeholder="ton@email.com" required aria-label="Adresse email" />
+              <button type="submit" class="btn btn-brand">Je veux tester</button>
+            </div>
+            <input type="hidden" name="_subject" value="Nouvelle inscription bêta Levly" />
+            <p class="privacy-note">
+              En t'inscrivant, tu acceptes notre
+              <a href="politique-confidentialite.html" target="_blank">politique de confidentialité</a>.
+              Zéro spam, on t'écrit seulement pour la bêta.
+            </p>
+          </form>
+        </div>
+        <!-- Message succès (affiché après envoi) -->
+        <div id="success">
+          <div class="check">✓</div>
+          <h2>C'est noté, merci !</h2>
+          <p>Tu fais partie des premiers. On te contacte dès que la bêta ouvre. En attendant, continue de bouger 💪</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-in">
+      <a href="#hero" class="logo"><span class="dot" style="width:24px;height:24px;font-size:13px">L</span> Levly</a>
+      <span>App en test · lancement bientôt · © 2026 Levly</span>
+      <div class="foot-links">
+        <a href="politique-confidentialite.html" target="_blank">Confidentialité</a>
+        <a href="cgu.html" target="_blank">CGU</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Envoi du formulaire en AJAX vers Formspree, pour afficher le message de succès
+    // sans quitter la page (meilleure expérience qu'une redirection).
+    // Lecture de la démo en vitesse x2 (elle dure ~1min40 en x1, ~50s en x2)
+    const demoVideo = document.getElementById('demo-video');
+    if (demoVideo) {
+      demoVideo.addEventListener('loadedmetadata', () => { demoVideo.playbackRate = 2; });
+      // Si l'utilisateur relance, on garde le x2
+      demoVideo.addEventListener('play', () => { demoVideo.playbackRate = 2; });
+    }
+
+    const form = document.getElementById('beta-form');
+    const formBlock = document.getElementById('form-block');
+    const success = document.getElementById('success');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button');
+      const original = btn.textContent;
+      btn.textContent = 'Envoi…';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          formBlock.style.display = 'none';
+          success.style.display = 'block';
+        } else {
+          throw new Error('Envoi impossible');
+        }
+      } catch (err) {
+        btn.textContent = original;
+        btn.disabled = false;
+        alert("Oups, l'envoi a échoué. Réessaie dans un instant ou écris-nous à greg.sala@icloud.com.");
+      }
+    });
+  </script>
+</body>
+</html>
